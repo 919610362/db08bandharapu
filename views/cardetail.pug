@@ -3,11 +3,17 @@ extends layout
 block content 
   h1= title 
  
-  - let carid = toShow._id 
-  - let carshade = toShow.shade 
-  - let carcost = toShow.cost 
-  - let carsize = toShow.size 
-  div 
+ if (toShow == null) 
+    h2 No instance to delete 
+  else 
+    - let carid = toShow._id 
+    - let carshade  = toShow.shade  
+    - let carcost = toShow.cost 
+    - let carsize = toShow.size  
+    - let actionid = "/resource/car/" + carid 
+    script let actionid = "#{actionid}"
+ 
+   div 
     div.row 
       div(class='carAttr mr-3') car ID is: 
       div #{carid} 
