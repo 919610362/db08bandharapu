@@ -1,17 +1,16 @@
 extends layout
-let items = results 
+
 block content
-  h1= title 
-  p Welcome to #{title}
-  - var results = [{shade:"Orange", cost: 15.0, size:"Compact"},{shade:"Blue", cost: 30.0, size:"Mid-size"},{shade:"Red", cost: 60.0, size:"Full-size"}]
-   div(class="container-fluid")
-    div(class="row" )
-     each res,index in results
-      div(class="col-sm-4" onclick=`buy(${index})`) shade : #{res.shade} , price : #{res.cost} , size : #{res.size} 
-  script.
-   let itemNumber=0                
-        function buy(itemNumber)
-        {
-            //for index in results
-             alert(`you purchased Item ${itemNumber+1}`)
-        }
+ h1= title
+ - let car  = results;
+ div(class="container-fluid")
+  div(class="row m-1")
+   each item in car 
+      - let destination = `dispatch(\"/car/update?id=${item._id}\")`
+      div(class="row-sm-2", class="m-1") Item #{item.shade}(#{item.cost}) is #{item.size}
+      button.btn( class="btn-primary ml-1", onclick= destination) Update
+      
+ script.
+  function dispatch(path){
+    window.location.href=path
+  }
