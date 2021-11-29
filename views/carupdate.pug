@@ -3,13 +3,13 @@ extends layout
 block content 
   h1= title 
  
- if (toShow == null) 
+  if (toShow == null) 
     h2 No instance to delete 
   else 
     - let carid = toShow._id 
-    - let carshade  = toShow.shade  
-    - let carcost = toShow.cost 
-    - let carsize = toShow.size  
+    - let carcolor = toShow.color 
+    - let carbrand = toShow.brand
+    - let carprice = toShow.price 
     - let actionid = "/resource/car/" + carid 
     script let actionid = "#{actionid}"
    
@@ -19,14 +19,14 @@ block content
   - let actionid = "/resource/car/" + carid 
   form(id='carForm', action= actionid, method="PUT") 
     div.form-group 
-        label.carAttr(for='carshade') carshade 
-        input#carshade(type='text', name='carshade', value= carshade ) 
+        label.carAttr(for='carcolor') Car color 
+        input#carcolor(type='text', name='carcolor', value= carcolor ) 
     div.form-group 
-        label.carAttr(for='carcost') carcost 
-        input#carcost(type='number', name='carcost', value= carcost ) 
+        label.carAttr(for='carbrand') Car brand 
+        input#carbrand(type='text', name='carbrand', value= carbrand ) 
     div.form-group 
-        label.carAttr(for='carsize') carsize
-        input#carsize(type='text', name='carsize', value= carsize ) 
+        label.carAttr(for='carprice') Car price
+        input#carprice(type='number', name='carprice', value= carprice ) 
     input(type="submit") 
  
   script. 
